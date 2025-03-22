@@ -75,7 +75,6 @@ To enable social authentication, you need to configure the social providers in t
 ```env
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
-GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/callback/google
 ```
 
 Repeat this process for other providers (e.g., Facebook, GitHub, etc.).

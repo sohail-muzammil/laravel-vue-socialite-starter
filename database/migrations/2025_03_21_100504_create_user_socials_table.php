@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_socialites', function (Blueprint $table) {
+        Schema::create('user_socials', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('provider');
+            $table->foreignId('oauth_provider_id');
 
             $table->string('social_id');
             $table->string('nickname')->nullable();
@@ -29,7 +29,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->unique(['user_id', 'slug']);
+            $table->unique(['user_id', 'oauth_provider_id']);
         });
     }
 
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_socialites');
+        Schema::dropIfExists('user_socials');
     }
 };

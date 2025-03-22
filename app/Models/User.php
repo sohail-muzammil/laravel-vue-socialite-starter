@@ -50,9 +50,9 @@ class User extends Authenticatable
     /**
      * Get the social accounts that belong to the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<UserSocialite>
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<UserSocial>
      */
     public function userSocialAccounts () {
-        return $this->hasMany(UserSocialite::class);
+        return $this->hasMany(UserSocial::class);
     }
 }

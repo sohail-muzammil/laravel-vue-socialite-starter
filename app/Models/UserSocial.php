@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserSocialite extends Model
+class UserSocial extends Model
 {
     protected $casts = [
         'data' => 'array',
@@ -13,7 +13,7 @@ class UserSocialite extends Model
 
     protected $fillable = [
         'user_id',
-        'provider',
+        'oauth_provider_id',
         'social_id',
         'nickname',
         'name',

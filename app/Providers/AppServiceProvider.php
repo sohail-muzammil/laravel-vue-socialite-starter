@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\OauthProvider;
 use Illuminate\Support\ServiceProvider;
+
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Inertia::share([
+            'oauth_providers' => fn () => OauthProvider::where('enabled', true)
+            ->orderBy('name')
+            ->get(),
+        ]);
     }
 }

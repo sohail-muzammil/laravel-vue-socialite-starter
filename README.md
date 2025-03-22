@@ -9,52 +9,69 @@ This project is a Laravel 12 application integrated with Vue.js using the new Vu
 - **Laravel 12**: Built with the latest version of Laravel.
 - **Vue Starter Kit**: Integrated with Vue.js for a modern frontend experience.
 - **Laravel Socialite**: Simplifies OAuth authentication with social providers.
+- **Social Auth Management**: The `oauth_providers` table is used to manage social authentication providers. It includes the following columns:
+  - `name`
+  - `icon`
+  - `client_id`
+  - `client_secret`
+  - `enabled`
+  
+  Use the `OauthProvidersSeeder` to easily add data for social providers.
 
 ## Installation
 
 Follow these steps to set up the project locally:
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/sohail-muzammil/laravel-vue-socialite-starter.git
    cd laravel-vue-socialite-starter
    ```
 
 2. **Install dependencies**:
+
    ```bash
    composer install
    npm install
    ```
 
 3. **Set up the environment file**:
+
    - Copy `.env.example` to `.env`:
+
      ```bash
      cp .env.example .env
      ```
+
    - Generate an application key:
+
      ```bash
      php artisan key:generate
      ```
+
    - Update the `.env` file with your database credentials and social provider credentials (e.g., Google, Facebook, etc.).
 
 4. **Run migrations**:
+
    ```bash
-   php artisan migrate
+   php artisan migrate 
    ```
 
 5. **Compile assets**:
+
    ```bash
    npm run dev
    ```
 
 6. **Start the development server**:
+
    ```bash
    php artisan serve
    ```
 
 7. **Access the application**:
    Open your browser and go to `http://127.0.0.1:8000`.
-
 
 ### Supported Providers
 
@@ -66,51 +83,6 @@ Follow these steps to set up the project locally:
 - Gitlab
 - Bitbucket
 - Slack
-
-
-## Social Authentication Setup
-
-To enable social authentication, you need to configure the social providers in the `.env` file. Here’s an example for Google:
-
-```env
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-```
-
-Repeat this process for other providers (e.g., Facebook, GitHub, etc.).
-
-
-### Redirect URL Configuration
-
-In the `config/services.php` file, the redirect path for each social provider is dynamically set using the `APP_URL` environment variable. For example:
-
-```php
-'facebook' => [
-    'client_id' => env('FACEBOOK_CLIENT_ID'),
-    'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-    'redirect' => env('APP_URL') . '/auth/callback/facebook',
-],
-```
-
-**Important**: Ensure that the `APP_URL` in your `.env` file matches the actual URL of your application. For example:
-
-```env
-APP_URL=http://127.0.0.1:8000
-```
-
-If the `APP_URL` is incorrect, the social authentication flow will fail. Double-check the `redirect` URL in your social provider's developer console to ensure it matches the one in `config/services.php`.
-
-### Hiding Social Providers
-
-If you want to hide some of the social providers from the application, you can comment out the providers you don’t want in the following files:
-
-1. **Hide from Auth Pages**:
-   - Edit `resources/js/components/SocialiteLinks.vue` and comment out the providers you want to hide from the login/sign-up pages.
-
-2. **Hide from Settings Page**:
-   - Edit `app/Http/Controllers/Settings/SocialiteController.php` and comment out the providers you want to hide from the social accounts settings page.
-
-This allows you to customize which social providers are visible to users based on your application's requirements.
 
 ## Managing Social Accounts
 

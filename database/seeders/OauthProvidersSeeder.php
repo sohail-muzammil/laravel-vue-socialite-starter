@@ -43,8 +43,8 @@ class OauthProvidersSeeder extends Seeder
                         fill="currentColor"
                       />
                     </svg>',
-                'client_id' => '1092102604453-rl8s0abe3jqm0cil91ua019nn3eu2du7.apps.googleusercontent.com',
-                'client_secret' => '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',
+                'client_id' => '123456789',
+                'client_secret' => '123456789',
                 'enabled' => true
             ],
             [
